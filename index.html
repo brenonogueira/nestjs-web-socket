@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SOcket test</title>
+  </head>
+  <body>
+    <ul id="app"></ul>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.1/socket.io.js"
+      integrity="sha512-9mpsATI0KClwt+xVZfbcf2lJ8IFBAwsubJ6mI3rtULwyM3fBmQFzj0It4tGqxLOGQwGfJdk/G+fANnxfq9/cew=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script>
+      const socket = io('http://localhost:4001', { transports: ['websocket'] });
+
+      socket.on('connection', (data) => console.log(data));
+
+      socket.on('newUser', (data) => {
+        console.log(data);
+        document.getElementById('app').innerHTML += `
+				<li>
+					<div>
+						<h2>${data.name}</h2>
+						<p>${data.email}</p>
+						</div>
+					</li>
+				`;
+      });
+    </script>
+  </body>
+</html>
