@@ -28,6 +28,8 @@
     "@nestjs/platform-socket.io": "^9.0.5",
     "@nestjs/websockets": "^9.0.5",
     "@prisma/client": "^4.1.0",
+    "@types/express-handlebars": "^5.3.1",
+    "express-handlebars": "^5.3.5",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rxjs": "^7.2.0"

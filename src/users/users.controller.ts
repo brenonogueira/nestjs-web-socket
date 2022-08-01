@@ -6,6 +6,8 @@ import {
   Patch,
   Param,
   Delete,
+  Res,
+  // Res,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
@@ -21,8 +23,12 @@ export class UsersController {
   }
 
   @Get()
-  findAll() {
-    return this.usersService.findAll();
+  findAll(@Res() res: any) {
+    return res.render('pages/users', {
+      // layout: 'mainLayout',
+      message: 'hELLO WORLD',
+    });
+    // return this.usersService.findAll();
   }
 
   @Get(':id')
