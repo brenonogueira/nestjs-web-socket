@@ -16,7 +16,7 @@ export class UsersService {
     userCreate;
 
     this.gateway.wss.emit('newUser', userCreate);
-    return 'sucesso';
+    return true;
   }
 
   findAll() {

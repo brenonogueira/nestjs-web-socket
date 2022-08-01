@@ -1,0 +1,12 @@
+{{#if success}}
+  <!-- Div para exibir mensagem de sucesso ao cadastrar formulario -->
+
+  <div class='alert alert-primary' role='alert'>
+    {{success.message}}
+  </div>
+{{/if}}
+
+{{#if error_msg}}
+  <!-- Div para exibir mensagem de erro ao cadastrar formulario -->
+  <div class='alert alert-danger'>{{error_msg}}</div>
+{{/if}}

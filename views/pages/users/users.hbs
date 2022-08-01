@@ -1,0 +1,45 @@
+<div class='d-flex justify-content-around mb-4'>
+  <h3>Lista de usuários</h3>
+
+  <a class='btn btn-primary btn-sm' href='/users/form_user'><i
+      class='fas fa-plus'
+    ></i>
+    Adicionar novo usuário
+  </a>
+</div>
+<div class='table-responsive'>
+
+  <table class='table'>
+    <thead>
+      <tr>
+        <th scope='col'>ID</th>
+        <th scope='col'>Nome</th>
+        <th scope='col'>E-mail</th>
+        <th align='center'>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each usuarios}}
+
+        <tr>
+          <td>{{this.id}}</td>
+          <td>{{this.name}}</td>
+          <td>{{this.email}}</td>
+          <td>
+            <div>
+              <a class='btn btn-primary' href='/vacina'><i
+                  class='fa fa-edit'
+                ></i>
+              </a>
+              <a class='btn btn-danger' href='/vacina'><i
+                  class='fa-solid fa-trash-can'
+                ></i>
+              </a>
+
+            </div></td>
+        </tr>
+
+      {{/each}}
+    </tbody>
+  </table>
+</div>

@@ -29,8 +29,12 @@
     "@nestjs/websockets": "^9.0.5",
     "@prisma/client": "^4.1.0",
     "@types/express-handlebars": "^5.3.1",
+    "express": "^4.18.1",
     "express-handlebars": "^5.3.5",
+    "express-session": "^1.17.3",
+    "flash": "^1.1.0",
     "reflect-metadata": "^0.1.13",
+    "req-flash": "^0.0.3",
     "rimraf": "^3.0.2",
     "rxjs": "^7.2.0"
   },
