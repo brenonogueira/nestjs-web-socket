@@ -8,6 +8,7 @@ import {
   Delete,
   Res,
   Req,
+
   // Res,
 } from '@nestjs/common';
 import { Request, Response } from 'express';
@@ -28,7 +29,6 @@ export class UsersController {
     const createUser = this.usersService.create(createUserDto);
     createUser;
     if (createUser) {
-      req.flash('success', 'Successfully created category!');
       res.redirect('users');
     }
   }
@@ -40,27 +40,13 @@ export class UsersController {
 
   @Get()
   async findAll(@Res() res: any, @Req() req: any) {
-    // console.log(res.locals.flash[0]['type']);
     const users = await this.usersService.findAll();
 
-    if (res.locals.flash[0]) {
-      return res.render('pages/users/users', {
-        // layout: 'mainLayout',
-        usuarios: users,
-        message: 'hELLO WORLD',
-        success: res.locals.flash[0]['message']
-          ? res.locals.flash[0]['message']
-          : null,
-      });
-    } else {
-      return res.render('pages/users/users', {
-        // layout: 'mainLayout',
-        usuarios: users,
-        message: 'hELLO WORLD',
-      });
-    }
-
-    // return;
+    return res.render('pages/users/users', {
+      // layout: 'mainLayout',
+      usuarios: users,
+      message: 'hELLO WORLD',
+    });
   }
 
   @Get(':id')
@@ -68,13 +54,20 @@ export class UsersController {
     return this.usersService.findOne(+id);
   }
 
-  @Patch(':id')
+  @Patch('update/:id')
   update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
     return this.usersService.update(+id, updateUserDto);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.usersService.remove(+id);
+  @Delete('delete/:id')
+  remove(@Param('id') id: string, @Res() res: Response) {
+    const deleteUser = this.usersService.remove(+id);
+    deleteUser;
+
+    if (deleteUser) {
+      res.redirect('/users');
+    } else {
+      throw new Error('falha');
+    }
   }
 }
